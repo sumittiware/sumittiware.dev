@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="main">
+  <h1>{{ .Title }}</h1>
+  <div>{{ .Content | safeHTML }}</div>
+
+  <ul>
+    {{ range .Paginator.Pages }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+      <span class="post-date">{{ dateFormat "2006-01-02" .Date }}</span>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

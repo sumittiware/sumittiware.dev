@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="posts">
+    <h1>{{ .Params.Title }}</h1>
+    {{ if .Params.Description }}<p>{{ .Params.Description }}</p>{{ end }}
+    <ul>
+        {{ range .Paginator.Pages }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .Params.Title }}</a>
+            <span class="date">{{ dateFormat "January 2, 2006" .Params.Date }}</span>
+        </li>
+        {{ end }}
+    </ul>
+    {{ template "_internal/pagination.html" . }}
+</div>
+{{ end }}

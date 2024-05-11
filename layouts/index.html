@@ -1,0 +1,61 @@
+{{ define "main" }}
+<div class="main">
+  <section class="intro">
+    <div class="intro-left">
+      <h2>{{ .Site.Params.name }}</h2>
+      <h4><i>{{ .Site.Params.profile }}</i></h4>
+      <p> {{ .Site.Params.profileDescription }} </p>
+    </div>
+    <div class="intro-right">
+      <img class="intro-image" src="{{ .Site.Params.image | relURL }}" alt={{ .Site.Params.authorName }} />
+    </div>
+  </section>
+
+  <section class="section-posts">
+    <div class="intro-left">
+      <h2>Writing</h2>
+      <p>I don't write as much as I would like to but here is the list of some recent posts.</p>
+      {{ $pages := where .Site.RegularPages "Section" "post" }}
+      {{ if $pages }}
+      <ul class="posts-list">
+        {{ range first 5 $pages.ByDate.Reverse }}
+        <li>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          <span class="post-date"> {{ .Date.Format "2006-01-02" }}</span>
+        </li>
+        {{ end }} 
+        {{ if gt (len $pages) 5 }}
+        <li><a href="{{ "post/" | relURL }}">Other posts</a></li>
+        {{ end }}
+      </ul>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="section-projects">
+    <div class="intro-left">
+      <h2 id="projects">Projects</h2>
+      <p>Some of the personal projects I have worked on. You can find more on <a target="_blank" rel="noopener noreferrer" href={{ .Site.Social.github }}>Github</a>.</p>
+      <ul>
+        <li><a href="https://github.com/sumittiware/NoteSnap" target="_blank" rel="noopener noreferrer">NoteSnap</a> : Complete online notes making solution, with OCR based chrome-extension and the online text editior platform.</li>
+        <li><a href="https://github.com/sumittiware/Inshorts-Clone" target="_blank" rel="noopener noreferrer">In-shorts clone</a> : Full-Stack In-shorts clone that scraps tha data from Inshort's website and displays in app</li>
+        <li><a href="https://github.com/sumittiware/Youtube-Downloader" target="_blank" rel="noopener noreferrer">YouPlay</a>  : Mobile app that let's you download video/mp3 from youtube and origanize your own playlist</li>
+      </ul>
+      <p>Apart from these, I also keeps pushing my learnings on <a target="_blank" rel="noopener noreferrer" href={{ .Site.Social.github }}>github</a> and have some amazing repos.</p>
+    </div>
+  </section>
+
+  <section class="section-contact">
+    <h2 id="projects">Contact</h2>
+    <p>
+      You can find me on
+      <a target="_blank" rel="noopener noreferrer" href={{ .Site.Social.x }}>X</a>,
+      <a target="_blank" rel="noopener noreferrer" href={{ .Site.Social.github }}>Github</a> and
+      <a target="_blank" rel="noopener noreferrer" href={{ .Site.Social.linkedin }}>Linkedin</a>
+      or email at 
+      <a target="_blank" rel="noopener noreferrer" href="mailto:tiwaresumit143@gmail.com">tiwaresumit143@gmail.com</a>.
+    </p>
+  </section>
+
+</div>
+{{ end }}

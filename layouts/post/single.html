@@ -1,0 +1,13 @@
+{{ define "main" }}
+<div class="post">
+  <h1 class="title">
+    {{ .Params.Title }}
+  </h1>
+  <div>
+    {{ .Params.Content | safeHTML }}
+  </div>
+  <p class="subtitle">
+    Published on {{ dateFormat "January 2, 2006" .Params.Date }}
+  </p>
+</div>
+{{ end }}

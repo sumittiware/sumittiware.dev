@@ -1,0 +1,48 @@
+baseURL = 'https://sumittware.dev/'
+languageCode = 'en-us'
+title = 'Sumit Tiware'
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+# Syntax highlighting
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = true
+    style = "monokai"
+    tabWidth = 4
+
+[params]
+  name = "Sumit Tiware"
+  profile = "Software Developer"
+  profileDescription = '''
+  As a tech enthusiast and recent BTech graduate, I am a Software Developer at Alippo.
+At Alippo, I played a key role in optimizing the search system, integrating Elasticsearch for lightning-fast retrieval. I also streamlined the data ingestion process by enhancing the open-source Mage2Storefront ingester, synchronizing with Kafka for efficient updates.
+What sets me apart is my ability to quickly adapt and dive deep into problems, delivering effective solutions. This skill has been instrumental in tackling complex challenges head-on, allowing me to continuously grow as a developer.
+Beyond coding, I'm a well-rounded individual with a passion for problem-solving. From engaging in coding challenges to exploring diverse interests like manga, mythology, and the beloved sport of cricket, I embrace a holistic approach to personal growth.
+Looking ahead, I'm eager to delve into the intricacies of large-scale system architectures and the revolutionary world of blockchain technology. This digital playground serves as a platform to share insights, lessons, and thoughts on shipping great products while becoming a better developer.
+Let's connect and explore the ever-evolving landscape of technology together. I'm always open to collaborating, learning, and sharing insights with fellow tech enthusiasts, as we push the boundaries of what's possible.
+  '''
+  image = "img/thinker.png"
+
+[social]
+    twitter = "https://twitter.com/_Sumit_Tiware"
+    linkedin = "https://www.linkedin.com/in/sumit-g-tiware-b0b5a81a3/"
+    github = "https://github.com/sumittiware"
+
+
+[permalinks]
+  posts = "/:sections/:title/"
+
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
