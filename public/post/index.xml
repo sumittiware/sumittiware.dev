@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Post on Sumit Tiware</title>
-    <link>http://localhost:1313/post/</link>
+    <link>https://sumittware.dev/post/</link>
     <description>Recent content in Post on Sumit Tiware</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 02 Sep 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://sumittware.dev/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Move Constructors in C&#43;&#43; with Examples</title>
-      <link>http://localhost:1313/post/move-constructors-in-cpp/</link>
+      <link>https://sumittware.dev/post/move-constructors-in-cpp/</link>
       <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/move-constructors-in-cpp/</guid>
+      <guid>https://sumittware.dev/post/move-constructors-in-cpp/</guid>
       <description>What is a Move Constructor? The copy constructors in C++ work with the l-value references and copy semantics(copy semantics means copying the actual data of the object to another object rather than making another object to point the already existing object in the heap). While move constructors work on the r-value references and move semantics(move semantics involves pointing to the already existing object in the memory).&#xA;On declaring the new object and assigning it with the r-value, firstly a temporary object is created, and then that temporary object is used to assign the values to the object.</description>
     </item>
     <item>
       <title>Just my random post</title>
-      <link>http://localhost:1313/post/l-r-and-r-value-references/</link>
+      <link>https://sumittware.dev/post/l-r-and-r-value-references/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/l-r-and-r-value-references/</guid>
+      <guid>https://sumittware.dev/post/l-r-and-r-value-references/</guid>
       <description>Nothing here gys</description>
     </item>
     <item>
       <title>lvalues references and rvalues references in C&#43;&#43; with Examples</title>
-      <link>http://localhost:1313/post/l-value-and-r-value-references/</link>
+      <link>https://sumittware.dev/post/l-value-and-r-value-references/</link>
       <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/l-value-and-r-value-references/</guid>
+      <guid>https://sumittware.dev/post/l-value-and-r-value-references/</guid>
       <description>Prerequisites: lvalue and rvalue in C++, References in C++&#xA;“l-value” refers to a memory location that identifies an object. “r-value” refers to the data value that is stored at some address in memory. References in C++ are nothing but the alternative to the already existing variable. They are declared using the ‘&amp;amp;’ before the name of the variable.&#xA;Example:&#xA;1 2 3 4 5 6 7 int a = 10; // Declaring lvalue reference int&amp;amp; lref = a; // Declaring rvalue reference int&amp;amp;&amp;amp; rref = 20; Below is the implementation for lvalue and rvalue:</description>
     </item>
   </channel>
