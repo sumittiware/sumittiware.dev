@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="post">
+  <h1 class="title">
+    {{ .Title }}
+  </h1>
+  <div>
+    {{ .Content | safeHTML }}
+    or this content 
+  </div>
+  <div>
+    At least this should show up!
+  </div>
+  <p class="subtitle">
+    Published on {{ dateFormat "January 2, 2006" .Date }}
+  </p>
+</div>
+{{ end }}

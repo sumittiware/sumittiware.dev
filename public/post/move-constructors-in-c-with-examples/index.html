@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!-- layouts/_default/baseof.html -->
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Constructors in C&#43;&#43; with Examples &middot; Sumit Tiware</title>
+    <meta property="og:image" content="img/thinker.png" />
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400;1,600;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+
+    
+    
+    
+    <link rel="stylesheet" href="/main.ea3374aa6dd75d2c519a86c1da3754a780d0aa2aa9dc9a5da3eeabf0ee2b386b.css">
+
+    <link href="/scss/main.scss" rel="stylesheet" type="text/css" />
+
+    
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        
+<div class="post">
+  <h1 class="title">
+    Move Constructors in C&#43;&#43; with Examples
+  </h1>
+  <div>
+    <h2 id="what-is-a-move-constructor">What is a Move Constructor?</h2>
+<p>The <a href="https://www.geeksforgeeks.org/copy-constructor-in-cpp/">copy constructors</a> in C++ work with the l-value references and copy semantics(copy semantics means copying the actual data of the object to another object rather than making another object to point the already existing object in the heap). While move constructors work on the r-value references and move semantics(move semantics involves pointing to the already existing object in the memory).</p>
+<p>On declaring the new object and assigning it with the r-value, firstly a temporary object is created, and then that temporary object is used to assign the values to the object. Due to this the copy constructor is called several times and increases the overhead and decreases the computational power of the code. To avoid this overhead and make the code more efficient we use move constructors.</p>
+<h2 id="why-move-constructors-are-used">Why Move Constructors are used?</h2>
+<p>Move constructor moves the resources in the heap, i.e., unlike copy constructors which copy the data of the existing object and assigning it to the new object move constructor just makes the pointer of the declared object to point to the data of temporary object and nulls out the pointer of the temporary objects. Thus, move constructor prevents unnecessarily copying data in the memory.</p>
+<p>Work of move constructor looks a bit like default member-wise copy constructor but in this case, it nulls out the pointer of the temporary object preventing more than one object to point to same memory location.</p>
+<p>Below is the program without declaring the move constructor:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// C++ program without declaring the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// move constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Move Class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Move</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Declaring the raw pointer as
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// the data member of the class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> data;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	Move(<span style="color:#66d9ef">int</span> d)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Declare object in the heap
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		data <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>data <span style="color:#f92672">=</span> d;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Constructor is called for &#34;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> d <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Copy Constructor to delegated
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// Copy constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	Move(<span style="color:#66d9ef">const</span> Move<span style="color:#f92672">&amp;</span> source)
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">:</span> Move{ <span style="color:#f92672">*</span>source.data }
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Copying constructor copying
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// the data by making deep copy
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Copy Constructor is called - &#34;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Deep copy for &#34;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>source.data
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Destructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#f92672">~</span>Move()
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (data <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// If the pointer is not
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#75715e">// pointing to nullptr
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Destructor is called for &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>data <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// If the pointer is
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#75715e">// pointing to nullptr
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Destructor is called&#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; for nullptr&#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Free the memory assigned to
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// data member of the object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">delete</span> data;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Driver Code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Create vector of Move Class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span>Move<span style="color:#f92672">&gt;</span> vec;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Inserting object of Move class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vec.push_back(Move{ <span style="color:#ae81ff">10</span> });
+</span></span><span style="display:flex;"><span>	vec.push_back(Move{ <span style="color:#ae81ff">20</span> });
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output:</p>
+<pre tabindex="0"><code>Constructor is called for 10
+Constructor is called for 10
+Copy Constructor is called - Deep copy for 10
+Destructor is called for 10
+Constructor is called for 20
+Constructor is called for 20
+Copy Constructor is called - Deep copy for 20
+Constructor is called for 10
+Copy Constructor is called - Deep copy for 10
+Destructor is called for 10
+Destructor is called for 20
+Destructor is called for 10
+Destructor is called for 20
+</code></pre><h3 id="explanation">Explanation:</h3>
+<p>The above program shows the unnecessarily calling copy constructor and inefficiently using the memory by copying the same data several times as it new object upon each call to copy constructor.</p>
+<p>Syntax of the Move Constructor:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>Object_name(Object_name<span style="color:#f92672">&amp;&amp;</span> obj) 
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">:</span> data{ obj.data }
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>   <span style="color:#75715e">// Nulling out the pointer to the temporary data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   obj.data <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This unnecessary use of the memory can be avoided by using move constructor. Below is the program declaring the move constructor:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// C++ program with declaring the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// move constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Move Class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Move</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Declare the raw pointer as
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#75715e">// the data member of class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> data;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	Move(<span style="color:#66d9ef">int</span> d)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Declare object in the heap
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		data <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">*</span>data <span style="color:#f92672">=</span> d;
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Constructor is called for &#34;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> d <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Copy Constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	Move(<span style="color:#66d9ef">const</span> Move<span style="color:#f92672">&amp;</span> source)
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">:</span> Move{ <span style="color:#f92672">*</span>source.data }
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Copying the data by making
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// deep copy
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Copy Constructor is called -&#34;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Deep copy for &#34;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>source.data
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Move Constructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	Move(Move<span style="color:#f92672">&amp;&amp;</span> source)
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">:</span> data{ source.data }
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Move Constructor for &#34;</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>source.data <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		source.data <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Destructor
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#f92672">~</span>Move()
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (data <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// If pointer is not pointing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#75715e">// to nullptr
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Destructor is called for &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>data <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">// If pointer is pointing
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#75715e">// to nullptr
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Destructor is called&#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; for nullptr &#34;</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">// Free up the memory assigned to
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#75715e">// The data member of the object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">delete</span> data;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Driver Code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Vector of Move Class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span>Move<span style="color:#f92672">&gt;</span> vec;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// Inserting Object of Move Class
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vec.push_back(Move{ <span style="color:#ae81ff">10</span> });
+</span></span><span style="display:flex;"><span>	vec.push_back(Move{ <span style="color:#ae81ff">20</span> });
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output:</p>
+<pre tabindex="0"><code>Constructor is called for 10
+Move Constructor for 10
+Destructor is called for nullptr 
+Constructor is called for 20
+Move Constructor for 20
+Constructor is called for 10
+Copy Constructor is called -Deep copy for 10
+Destructor is called for 10
+Destructor is called for nullptr 
+Destructor is called for 10
+Destructor is called for 20
+</code></pre><h2 id="explanation-1">Explanation:</h2>
+<p>The unnecessary call to the copy constructor is avoided by making the call to the move constructor. Thus making the code more memory efficient and decreasing the overhead of calling the move constructor.</p>
+
+  </div>
+  <p class="subtitle">
+    Published on September 2, 2021
+  </p>
+  <div id="disqus_thread"></div>
+  <script>
+    
+
+    var disqus_config = function () {
+    this.page.url = "/post/";  
+    this.page.identifier = "move-constructors-in-cpp"; 
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://sumittiware-dev.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  <script id="dsq-count-scr" src="//sumittiware-dev.disqus.com/count.js" async></script>
+</div>
+
+      </div>
+      
+        <div class="footer">
+          <div class="footer-left">
+            <a href="http://localhost:1313/">&#129040; back to home page</a>
+          </div>
+        </div>
+      
+    </section>
+  </body>
+</html>

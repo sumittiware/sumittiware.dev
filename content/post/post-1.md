@@ -119,7 +119,7 @@ lref = 30
 rref = 40
 ```
 
-**Uses of the lvalue references:**
+### Uses of the lvalue references:
 1. lvalue references can be used to alias an existing object.
 2. They can also be used to implement pass-by-reference semantics.
 
@@ -162,13 +162,13 @@ a = 20 b = 10
 
 **Note:** When the function return lvalue reference the expression becomes lvalue [expression](https://en.cppreference.com/w/cpp/language/value_category).
 
-**Uses of rvalue references:** 
+### Uses of rvalue references:
 
 1. They are used in working with the move constructor and move assignment.
 2. cannot bind non-const lvalue reference of type ‘int&‘ to an rvalue of type ‘int’.
 3. cannot bind rvalue references of type ‘int&&‘ to lvalue of type ‘int’.
 
-# Program 1:
+### Program 1:
 ```C++
 // C++ program to illustrate rvalue
 #include <iostream>
@@ -199,7 +199,7 @@ Output:
 10
 ```
 
-# Program 2:
+### Program 2:
 ```C++
 // C++ program to illustrate rvalue
 #include <iostream>

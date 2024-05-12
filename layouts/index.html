@@ -4,7 +4,11 @@
     <div class="intro-left">
       <h2>{{ .Site.Params.name }}</h2>
       <h4><i>{{ .Site.Params.profile }}</i></h4>
-      <p> {{ .Site.Params.profileDescription }} </p>
+      <p>
+        {{ with .Site.Params.profileDescription }}
+          {{ . | safeHTML }}
+        {{ end }}
+      </p>
     </div>
     <div class="intro-right">
       <img class="intro-image" src="{{ .Site.Params.image | relURL }}" alt={{ .Site.Params.authorName }} />
@@ -24,10 +28,10 @@
           <span class="post-date"> {{ .Date.Format "2006-01-02" }}</span>
         </li>
         {{ end }} 
-        {{ if gt (len $pages) 5 }}
-        <li><a href="{{ "post/" | relURL }}">Other posts</a></li>
-        {{ end }}
       </ul>
+        {{ if gt (len $pages) 5 }}
+          <div>Checkout all my posts <a href="{{ "post/" | relURL }}">here</a></div>
+        {{ end }}
       {{ end }}
     </div>
   </section>
@@ -37,10 +41,7 @@
       <h2 id="projects">Projects</h2>
       <p>Some of the personal projects I have worked on. You can find more on <a target="_blank" rel="noopener noreferrer" href={{ .Site.Social.github }}>Github</a>.</p>
       <ul>
-        <li><a href="https://github.com/sumittiware/NoteSnap" target="_blank" rel="noopener noreferrer">NoteSnap</a> : Complete online notes making solution, with OCR based chrome-extension and the online text editior platform.</li>
-        <li><a href="https://github.com/sumittiware/Inshorts-Clone" target="_blank" rel="noopener noreferrer">In-shorts clone</a> : Full-Stack In-shorts clone that scraps tha data from Inshort's website and displays in app</li>
-        <li><a href="https://github.com/sumittiware/Youtube-Downloader" target="_blank" rel="noopener noreferrer">YouPlay</a>  : Mobile app that let's you download video/mp3 from youtube and origanize your own playlist</li>
-      </ul>
+        <li><a href="https://github.com/sumittiware/NoteSnap" target="_blank" rel="noopener noreferrer">NoteSnap</a> : Complete online notes making solution)</li>
       <p>Apart from these, I also keeps pushing my learnings on <a target="_blank" rel="noopener noreferrer" href={{ .Site.Social.github }}>github</a> and have some amazing repos.</p>
     </div>
   </section>

@@ -1,10 +1,8 @@
 +++
-title = "Just my random post"
+title = "How did I build Alippo's search from scratch?"
 description = ""
-date = 2021-09-01
-updated = 2021-09-01
-draft = false
-slug = "l-r-and-r-value-references"
+date = 2023-05-10
+updated =2023-05-10
+draft = true
+slug = "alippo-search-from-scratch"
 +++
-
-Nothing here gys

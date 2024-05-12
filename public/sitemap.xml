@@ -2,36 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://sumittware.dev/</loc>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2023-05-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/post/move-constructors-in-c-with-examples/</loc>
     <lastmod>2021-09-02T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://sumittware.dev/post/move-constructors-in-cpp/</loc>
-    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://sumittware.dev/post/</loc>
-    <lastmod>2021-09-02T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://sumittware.dev/post/l-r-and-r-value-references/</loc>
+    <loc>http://localhost:1313/post/lvalues-references-and-rvalues-references-in-c-with-examples/</loc>
     <lastmod>2021-09-01T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://sumittware.dev/post/l-value-and-r-value-references/</loc>
-    <lastmod>2021-09-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://sumittware.dev/categories/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://sumittware.dev/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

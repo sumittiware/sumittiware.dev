@@ -1,5 +1,5 @@
 +++
-title= "Blog"
-description= "jsfv"
+title= "Content Title"
+description= "Content Description"
 +++
 

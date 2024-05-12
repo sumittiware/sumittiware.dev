@@ -14,13 +14,13 @@ tags = ["C++-Constructors",
         "C++ Programs"]
 +++
 
-# What is a Move Constructor?  
+## What is a Move Constructor?  
 
 The [copy constructors](https://www.geeksforgeeks.org/copy-constructor-in-cpp/) in C++ work with the l-value references and copy semantics(copy semantics means copying the actual data of the object to another object rather than making another object to point the already existing object in the heap). While move constructors work on the r-value references and move semantics(move semantics involves pointing to the already existing object in the memory).
 
 On declaring the new object and assigning it with the r-value, firstly a temporary object is created, and then that temporary object is used to assign the values to the object. Due to this the copy constructor is called several times and increases the overhead and decreases the computational power of the code. To avoid this overhead and make the code more efficient we use move constructors.
 
-# Why Move Constructors are used?
+## Why Move Constructors are used?
 
 Move constructor moves the resources in the heap, i.e., unlike copy constructors which copy the data of the existing object and assigning it to the new object move constructor just makes the pointer of the declared object to point to the data of temporary object and nulls out the pointer of the temporary objects. Thus, move constructor prevents unnecessarily copying data in the memory.  
 
@@ -120,7 +120,7 @@ Destructor is called for 10
 Destructor is called for 20
 ```
 
-# Explanation: 
+### Explanation: 
 The above program shows the unnecessarily calling copy constructor and inefficiently using the memory by copying the same data several times as it new object upon each call to copy constructor.
 
 Syntax of the Move Constructor:
@@ -233,5 +233,5 @@ Destructor is called for 10
 Destructor is called for 20
 ```
 
-# Explanation: 
+## Explanation: 
 The unnecessary call to the copy constructor is avoided by making the call to the move constructor. Thus making the code more memory efficient and decreasing the overhead of calling the move constructor.
