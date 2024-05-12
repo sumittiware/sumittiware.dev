@@ -1,8 +1,6 @@
 backend:
   name: git-gateway
-  branch: main
-
-local_backend: true
+  repo: sumittiware/sumittiware.dev
 
 media_folder: "static/images" # Folder where user uploaded files should go
 public_folder: "images"
