@@ -1,8 +1,8 @@
 +++
 title= "How did I build Alippo's search from scratch? - Part 1"
 description= ""
-date= 2023-05-10
-updated= 2023-05-10
+date= 2023-05-18
+updated= 2023-05-18
 draft= false
 slug= "alippo-search-from-scratch"
 tags=["Search", "Search system", "Elasticsearch", "Kafka", "N8N"]
