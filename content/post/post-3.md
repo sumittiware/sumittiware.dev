@@ -29,7 +29,7 @@ Elasticsearch is preferred for building search systems over traditional database
 
 With Elasticsearch as our chosen database, the next challenge was how to efficiently ingest data from our PostgreSQL database into Elasticsearch. We needed a solution that would not only handle one-time data ingestion but also keep Elasticsearch synchronized with our main database.
 
-We discovered an excellent open-source project, mage2storefront, which synchronizes products, categories, and product-to-category links between a Magento2 API and a NoSQL database for Vue-storefront. We adapted this project to our needs, creating a server responsible for one-time data ingestion and ongoing data synchronization with our Elasticsearch cluster. By employing the abstract-factory pattern, we made it easy to add new search entities to our Elasticsearch index.
+We discovered an excellent open-source project, (mage2storefront)[https://github.com/vuestorefront/mage2vuestorefront], which synchronizes products, categories, and product-to-category links between a Magento2 API and a NoSQL database for Vue-storefront. We adapted this project to our needs, creating a server responsible for one-time data ingestion and ongoing data synchronization with our Elasticsearch cluster. By employing the abstract-factory pattern, we made it easy to add new search entities to our Elasticsearch index.
 
 
 ## Maintaining Data Consistency
