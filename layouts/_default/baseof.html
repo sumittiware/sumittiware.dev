@@ -19,8 +19,6 @@
     {{ $style := resources.Get "/scss/main.scss" | toCSS $options | fingerprint }}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 
-    <link href="/scss/main.scss" rel="stylesheet" type="text/css" />
-
     {{ block "head" . }}{{ end }}
   </head>
   <body>
