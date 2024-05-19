@@ -1,6 +1,6 @@
 baseURL = 'https://sumittiware.dev/'
 languageCode = 'en-us'
-title = 'Sumit Tiware'
+title = 'Sumit Tiware | Software Developer'
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -14,6 +14,8 @@ build_search_index = true
       unsafe = true
 
 [params]
+  title = "Sumit Tiware | Software Developer"
+  description = "Explore Sumit's Software Engineering Portfolio and Blogs"
   name = "Sumit Tiware"
   profile = "Software Developer"
   profileDescription = '''
@@ -24,7 +26,8 @@ build_search_index = true
   This space is where I share my views, notes, and ideas related to my professional and personal interests.
   '''
   image = "img/thinker.png"
-  og_image = "img/thinker.png"
+  resumeUrl = "https://drive.google.com/file/d/1GrJj1tOan6OF_uz_eWL4el9rseAqYXBl/view?usp=sharing"
+
 [social]
     twitter = "https://twitter.com/_Sumit_Tiware"
     linkedin = "https://www.linkedin.com/in/sumit-g-tiware-b0b5a81a3/"

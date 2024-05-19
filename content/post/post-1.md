@@ -1,6 +1,7 @@
 +++
 title = "lvalues references and rvalues references in C++ with Examples"
-description = ""
+description = "Understand the concepts of l-value and r-value references in C++ with practical examples and explanations. Learn how these references work, their uses, and the differences between them to enhance your programming efficiency."
+
 date = 2021-09-01
 updated = 2021-09-01
 draft = false

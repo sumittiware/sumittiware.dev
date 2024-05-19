@@ -1,6 +1,6 @@
 +++
 title = "Move Constructors in C++ with Examples"
-description = ""
+description = "Learn about Move Constructors in C++ and how they optimize memory usage by preventing unnecessary copying of data. Discover the differences between copy and move semantics through detailed examples and explanations."
 date = 2021-09-02
 updated = 2021-09-02
 draft = false

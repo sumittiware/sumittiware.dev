@@ -6,7 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} &middot; {{ .Site.Title }}{{ end }}</title>
+  
+    <!-- Seo tags -->
+    <meta name="description" content="{{ .Description }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+
+    <!-- Og tags -->
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Params.title }}{{ else }}{{ .Params.title }}{{ end }}" />
+    <meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Params.description }}{{ end }}" />
     <meta property="og:image" content="{{ .Site.Params.image }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:type" content="website" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
