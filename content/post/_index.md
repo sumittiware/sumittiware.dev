@@ -1,4 +1,9 @@
 +++
 title= "My Writings"
-description= "You can find all the learning I have had in my coding journey here"
+description= '''
+    Explore the comprehensive collection of my learning experiences, insights, and technical discoveries. Here, you'll find detailed posts covering various aspects of software development.
+    <br><br>
+    Each post is crafted to share knowledge, inspire growth, and help you tackle complex coding challenges with ease.
+    <br>
+'''
 +++

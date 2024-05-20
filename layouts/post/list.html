@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="posts">
     <h1>{{ .Title }}</h1>
-    {{ if .Description }}<p>{{ .Description }}</p>{{ end }}
+    {{ if .Description }}<p>{{ .Description | safeHTML }}</p>{{ end }}
     <ul>
         {{ range .Paginator.Pages }}
         <li>

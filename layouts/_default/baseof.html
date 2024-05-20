@@ -33,13 +33,20 @@
   </head>
   <body>
     <section class="section">
+      {{ if not .IsHome }}
+        <div class="footer">
+          <div class="footer-left">
+            <a href="{{ .Site.BaseURL }}">&#x2190; back to home</a>
+          </div>
+        </div>
+      {{ end }}
       <div class="container">
         {{ block "main" . }}{{ end }}
       </div>
       {{ if not .IsHome }}
         <div class="footer">
           <div class="footer-left">
-            <a href="{{ .Site.BaseURL }}">&#129040; back to home page</a>
+            <a href="{{ .Site.BaseURL }}">&#x2190; back to home</a>
           </div>
         </div>
       {{ end }}
