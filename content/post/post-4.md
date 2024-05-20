@@ -48,6 +48,6 @@ The above approach reduced our need to query multiple indices simultaneously and
 
 This approach added the overhead of maintaining consistency between different indices. If something changed in the course index, we also needed to update the global index. To achieve this, we modified our ingester server (discussed in the previous blog) to allow each content type entity to declare its dependent entities. Thus, when changes were made in the course, it would trigger an update event for the global index, ensuring consistency across indices.
 
-**_No system design is perfect, everything comes with pros and cons._** The choices we made seved us well for our usecase, would love to get your views on this in comments.
+**_No system design is perfect, everything comes with pros and cons._** The choices we made served us well for our usecase, would love to get your views on this in comments.
 
 I hope you enjoyed the short series on our Search System. I learned a lot during its development and am excited to share these insights with you.
