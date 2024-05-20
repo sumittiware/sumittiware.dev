@@ -2,8 +2,8 @@
 title = "How did I build Alippo's search from scratch? - Part 1"
 description = "Explore the foundational architecture of Alippo's search system, designed to help users efficiently find courses from our vast catalog. Learn about our choice of Elasticsearch, data ingestion, synchronization, and maintaining data consistency using open-source solutions."
 
-date = 2023-05-18
-updated = 2023-05-18
+date = 2024-05-18
+updated = 2024-05-18
 draft = false
 slug = "alippo-search-from-scratch-part-1"
 

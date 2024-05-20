@@ -1,8 +1,8 @@
 +++
 title = "How did I build Alippo's search from scratch? - Part 2"
 description = "Discover how we developed a robust search system at Alippo, from data ingestion to unified search results. Learn from our insights and design choices inspired by leading platforms."
-date = 2023-05-20
-updated = 2023-05-20
+date = 2024-05-20
+updated = 2024-05-20
 draft = false
 slug = "alippo-search-from-scratch-part-2"
 
