@@ -19,10 +19,10 @@ build_search_index = true
   name = "Sumit Tiware"
   profile = "Software Developer"
   profileDescription = '''
-   I'm a software developer responsible for designing and building amazing software at Alippo.
-  <br><br>
+  I'm a Software Engineer responsible for solving some amazing problems at Allen Digital.
+  <br>
   I have a passion for problem-solving, and in my free time, I contribute to open-source projects and indulge in activities like reading about archaeology, mythology, and fiction, as well as following cricket avidly.
-  <br><br>
+  <br>
   This space is where I share my views, notes, and ideas related to my professional and personal interests.
   '''
   image = "img/thinker.png"
