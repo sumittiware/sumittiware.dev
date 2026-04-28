@@ -36,7 +36,7 @@
       {{ if not .IsHome }}
         <div class="footer">
           <div class="footer-left">
-            <a href="{{ .Site.BaseURL }}">&#x2190; back to home</a>
+            <a href="{{ "/" | relURL }}">&#x2190; back to home</a>
           </div>
         </div>
       {{ end }}
@@ -46,7 +46,7 @@
       {{ if not .IsHome }}
         <div class="footer">
           <div class="footer-left">
-            <a href="{{ .Site.BaseURL }}">&#x2190; back to home</a>
+            <a href="{{ "/" | relURL }}">&#x2190; back to home</a>
           </div>
         </div>
       {{ end }}
